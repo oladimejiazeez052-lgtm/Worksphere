@@ -1,0 +1,16 @@
+export const ROUTES = {
+  LANDING: '/',
+  LOGIN: '/login',
+  REGISTER: '/register',
+  ONBOARDING: '/onboarding',
+  DASHBOARD: '/dashboard',
+  JOBS: '/jobs',
+  WORKERS: '/workers',
+  CREATE_JOB: '/jobs/create',
+  PORTFOLIO: '/portfolio',
+  REPORTS: '/reports',
+  NOTIFICATIONS: '/notifications',
+  SETTINGS: '/settings',
+  ADMIN: '/admin',
+  AI_PROFILE: '/ai/profile-builder',
+};
