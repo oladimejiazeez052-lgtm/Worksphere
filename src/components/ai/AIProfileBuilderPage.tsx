@@ -5,7 +5,7 @@ import { AIResponsePanel } from './AIResponsePanel';
 import { AIHistoryPanel } from './AIHistoryPanel';
 import { generateProfileDraft, GeneratedProfile } from '../../services/geminiService';
 import { AlertCircle, ArrowLeft } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { ROUTES } from '../../lib/routes';
 import { supabase } from '../../lib/supabase';
 import { useAuth } from '../../hooks/useAuth';
@@ -91,7 +91,7 @@ export function AIProfileBuilderPage() {
     <div className="max-w-7xl mx-auto px-4 py-8 md:py-12">
       <header className="mb-10">
         <Link 
-          to={ROUTES.PORTFOLIO}
+          href={ROUTES.PORTFOLIO}
           className="inline-flex items-center gap-2 text-primary hover:gap-3 transition-all mb-6 group"
         >
           <ArrowLeft className="w-5 h-5" />

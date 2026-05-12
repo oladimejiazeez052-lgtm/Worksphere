@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { ROUTES } from '@/src/lib/routes';
 import { Button } from '@/src/components/ui/Button';
 import { LayoutDashboard, Users, ShieldCheck, Zap, ArrowRight, Menu } from 'lucide-react';
@@ -11,17 +11,17 @@ export const LandingPage = () => {
       {/* Navbar */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-outline">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link to="/" className="text-2xl font-bold text-primary">WorkSphere</Link>
+          <Link href="/" className="text-2xl font-bold text-primary">WorkSphere</Link>
           <div className="hidden md:flex items-center gap-8">
             <a href="#features" className="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors">Features</a>
             <a href="#testimonials" className="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors">Success Stories</a>
             <a href="#pricing" className="text-sm font-semibold text-on-surface-variant hover:text-primary transition-colors">Pricing</a>
           </div>
           <div className="flex items-center gap-4">
-            <Link to={ROUTES.LOGIN}>
+            <Link href={ROUTES.LOGIN}>
               <Button variant="ghost">Log In</Button>
             </Link>
-            <Link to={ROUTES.REGISTER}>
+            <Link href={ROUTES.REGISTER}>
               <Button>Get Started</Button>
             </Link>
           </div>
@@ -40,10 +40,10 @@ export const LandingPage = () => {
                 Hire trusted professionals or showcase your skills globally on the most secure, efficient marketplace for the modern corporate world.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link to={ROUTES.REGISTER}>
+                <Link href={ROUTES.REGISTER}>
                   <Button size="lg" className="w-full sm:w-auto px-8">Find Your Next Job</Button>
                 </Link>
-                <Link to={ROUTES.REGISTER}>
+                <Link href={ROUTES.REGISTER}>
                   <Button variant="outline" size="lg" className="w-full sm:w-auto px-8">Post a Project</Button>
                 </Link>
               </div>
@@ -159,9 +159,9 @@ export const LandingPage = () => {
             <div>
               <h4 className="font-bold mb-4">Platform</h4>
               <ul className="space-y-2 text-sm text-on-surface-variant">
-                <li><Link to="/jobs" className="hover:text-primary">Find Work</Link></li>
-                <li><Link to="/workers" className="hover:text-primary">Hire Talent</Link></li>
-                <li><Link to="/pricing" className="hover:text-primary">Pricing</Link></li>
+                <li><Link href="/jobs" className="hover:text-primary">Find Work</Link></li>
+                <li><Link href="/workers" className="hover:text-primary">Hire Talent</Link></li>
+                <li><Link href="/pricing" className="hover:text-primary">Pricing</Link></li>
               </ul>
             </div>
             <div>

@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { Compass, Home, HelpCircle } from 'lucide-react';
 import { ROUTES } from '../../lib/routes';
 
 export function NotFoundPage() {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   return (
     <div className="min-h-screen bg-surface flex flex-col items-center justify-center p-6 text-center">
@@ -28,14 +28,14 @@ export function NotFoundPage() {
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <button 
-            onClick={() => navigate(ROUTES.DASHBOARD)}
+            onClick={() => router.push(ROUTES.DASHBOARD)}
             className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3 bg-primary text-on-primary font-label-md rounded-xl hover:bg-primary/90 transition-all shadow-lg active:scale-95"
           >
             <Home className="w-5 h-5 mr-2" />
             Back to Dashboard
           </button>
           <button 
-            onClick={() => navigate('/help')}
+            onClick={() => router.push('/help')}
             className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3 bg-surface border-2 border-outline-variant text-on-surface font-label-md rounded-xl hover:bg-surface-container transition-all active:scale-95"
           >
             <HelpCircle className="w-5 h-5 mr-2" />

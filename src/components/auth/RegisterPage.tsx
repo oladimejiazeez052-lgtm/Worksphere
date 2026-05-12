@@ -2,7 +2,8 @@ import React from 'react';
 import { AuthLayout } from './AuthLayout';
 import { Input } from '../ui/Input';
 import { Button } from '../ui/Button';
-import { Link, useNavigate } from 'react-router-dom';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { ROUTES } from '../../lib/routes';
 import { User, Mail, Lock, Briefcase, UserCircle, CheckCircle, ArrowRight } from 'lucide-react';
 import { useForm } from 'react-hook-form';
@@ -23,7 +24,7 @@ const registerSchema = z.object({
 type RegisterForm = z.infer<typeof registerSchema>;
 
 export const RegisterPage = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const { register: registerUser } = useAuth();
   const { success, error } = useToast();
   
@@ -39,7 +40,7 @@ export const RegisterPage = () => {
       const role = data.role === 'worker' ? 'Worker' : 'Client';
       await registerUser(`${data.firstName} ${data.lastName}`, data.email, role, data.password);
       success('Account created successfully!');
-      navigate(ROUTES.ONBOARDING);
+      router.push(ROUTES.ONBOARDING);
     } catch (e) {
       error('Failed to create account. Please try again.');
     }
@@ -124,7 +125,7 @@ export const RegisterPage = () => {
 
         <p className="text-center text-sm text-on-surface-variant font-medium">
           Already have an account?{' '}
-          <Link to={ROUTES.LOGIN} className="text-primary font-bold hover:underline">Log In</Link>
+          <Link href={ROUTES.LOGIN} className="text-primary font-bold hover:underline">Log In</Link>
         </p>
       </form>
     </AuthLayout>

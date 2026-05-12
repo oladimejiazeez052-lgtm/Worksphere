@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card } from '../ui/Card';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { APP_NAME } from '@/src/lib/constants';
 
 interface AuthLayoutProps {
@@ -17,7 +17,7 @@ export const AuthLayout = ({ children, title, subtitle, imageAlt }: AuthLayoutPr
       <div className="w-full lg:w-1/2 flex flex-col justify-center px-12 md:px-24 bg-background">
         <div className="max-w-md w-full mx-auto space-y-8">
           <div className="mb-12">
-            <Link to="/" className="text-2xl font-bold text-primary">{APP_NAME}</Link>
+            <Link href="/" className="text-2xl font-bold text-primary">{APP_NAME}</Link>
           </div>
           <div className="space-y-2">
             <h1 className="text-4xl font-bold tracking-tight text-on-surface">{title}</h1>

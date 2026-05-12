@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { usePathname, useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { NAV_ITEMS, APP_NAME } from '../../lib/constants';
 import { cn } from '../../lib/utils';
 import { Menu, Search, Bell, LogOut } from 'lucide-react';
@@ -10,8 +11,8 @@ import { useToast } from '../../hooks/useToast';
 import { ROUTES } from '../../lib/routes';
 
 export const SidebarShell = () => {
-  const location = useLocation();
-  const navigate = useNavigate();
+  const pathname = usePathname();
+  const router = useRouter();
   const { user, logout } = useAuth();
   const { success } = useToast();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -59,26 +60,25 @@ export const SidebarShell = () => {
         </div>
 
         <nav className="flex-grow px-4 space-y-1">
-          {NAV_ITEMS.map((item) => (
-            <NavLink
-              key={item.label}
-              to={item.href}
-              className={({ isActive }) => cn(
-                "flex items-center gap-3 px-4 py-3 rounded-button text-sm font-bold transition-all relative group",
-                isActive 
-                  ? "bg-primary/10 text-primary scale-[1.02]" 
-                  : "text-on-surface-variant hover:bg-surface-container hover:text-on-surface"
-              )}
-            >
-              {({ isActive }) => (
-                <>
-                  <item.icon className={cn("h-5 w-5 transition-transform group-hover:scale-110", isActive && "fill-current")} />
-                  {item.label}
-                  {isActive && <motion.div layoutId="active-nav" className="absolute left-0 w-1 h-6 bg-primary rounded-full" />}
-                </>
-              )}
-            </NavLink>
-          ))}
+          {NAV_ITEMS.map((item) => {
+            const isActive = pathname === item.href;
+            return (
+              <Link
+                key={item.label}
+                href={item.href}
+                className={cn(
+                  "flex items-center gap-3 px-4 py-3 rounded-button text-sm font-bold transition-all relative group",
+                  isActive 
+                    ? "bg-primary/10 text-primary scale-[1.02]" 
+                    : "text-on-surface-variant hover:bg-surface-container hover:text-on-surface"
+                )}
+              >
+                <item.icon className={cn("h-5 w-5 transition-transform group-hover:scale-110", isActive && "fill-current")} />
+                {item.label}
+                {isActive && <motion.div layoutId="active-nav" className="absolute left-0 w-1 h-6 bg-primary rounded-full" />}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="p-4 mt-auto space-y-2">

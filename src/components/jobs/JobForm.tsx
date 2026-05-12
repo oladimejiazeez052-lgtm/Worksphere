@@ -3,7 +3,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { ArrowRight, Info, Plus, X, DollarSign, Clock, Loader2 } from 'lucide-react';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { ROUTES } from '../../lib/routes';
 import { useToast } from '../../hooks/useToast';
 
@@ -26,7 +26,7 @@ export function JobForm() {
   const [step, setStep] = useState(1);
   const [skills, setSkills] = useState<string[]>(['UI Design', 'Prototyping']);
   const [skillInput, setSkillInput] = useState("");
-  const navigate = useNavigate();
+  const router = useRouter();
   const { user } = useAuth();
   const { success } = useToast();
 
@@ -57,7 +57,7 @@ export function JobForm() {
     }
 
     success("Job posted successfully!");
-    navigate(ROUTES.JOBS);
+    router.push(ROUTES.JOBS);
   };
 
   const addSkill = () => {

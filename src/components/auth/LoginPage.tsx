@@ -2,7 +2,8 @@ import React from 'react';
 import { AuthLayout } from './AuthLayout';
 import { Input } from '../ui/Input';
 import { Button } from '../ui/Button';
-import { Link, useNavigate } from 'react-router-dom';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { ROUTES } from '../../lib/routes';
 import { Mail, Lock, ArrowRight } from 'lucide-react';
 import { useForm } from 'react-hook-form';
@@ -19,7 +20,7 @@ const loginSchema = z.object({
 type LoginForm = z.infer<typeof loginSchema>;
 
 export const LoginPage = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const { login } = useAuth();
   const { success, error } = useToast();
   
@@ -32,7 +33,7 @@ export const LoginPage = () => {
     try {
       await login(data.email, data.password);
       success('Successfully logged in!');
-      navigate(ROUTES.DASHBOARD);
+      router.push(ROUTES.DASHBOARD);
     } catch (e) {
       error('Login failed. Please check your credentials.');
     }
@@ -77,7 +78,7 @@ export const LoginPage = () => {
 
         <p className="text-center text-sm text-on-surface-variant font-medium">
           Don't have an account?{' '}
-          <Link to={ROUTES.REGISTER} className="text-primary font-bold hover:underline">Sign up for free</Link>
+          <Link href={ROUTES.REGISTER} className="text-primary font-bold hover:underline">Sign up for free</Link>
         </p>
       </form>
     </AuthLayout>

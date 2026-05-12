@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { AppLayout } from '../layout/AppLayout';
 import { PortfolioTemplateSelector } from './PortfolioTemplateSelector';
 import { PortfolioPreview } from './PortfolioPreview';
@@ -84,7 +84,7 @@ export function PortfolioPage() {
                 <div className="flex justify-between items-center">
                   <label className="text-xs font-bold text-on-surface-variant uppercase tracking-wider">Bio</label>
                   <Link 
-                    to={ROUTES.AI_PROFILE}
+                    href={ROUTES.AI_PROFILE}
                     className="text-primary text-xs font-bold flex items-center gap-1 hover:underline"
                   >
                     <Sparkles className="w-3 h-3" />

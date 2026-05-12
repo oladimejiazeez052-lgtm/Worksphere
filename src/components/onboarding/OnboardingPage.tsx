@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { ROUTES } from '../../lib/routes';
 import { Button } from '../ui/Button';
 import { Input } from '../ui/Input';
@@ -18,7 +18,7 @@ const STEPS = [
 ];
 
 export const OnboardingPage = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const { updateUser } = useAuth();
   const { success } = useToast();
   const [currentStep, setCurrentStep] = useState(2);
@@ -34,7 +34,7 @@ export const OnboardingPage = () => {
     } else {
       updateUser({ onboarded: true });
       success('Welcome to WorkSphere!');
-      navigate(ROUTES.DASHBOARD);
+      router.push(ROUTES.DASHBOARD);
     }
   };
 

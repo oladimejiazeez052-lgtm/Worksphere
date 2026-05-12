@@ -2,7 +2,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { UserSession } from '../lib/storage';
 import { supabase } from '../lib/supabase';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { ROUTES } from '../lib/routes';
 
 interface AuthContextType {
@@ -19,7 +19,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<UserSession | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate();
+  const router = useRouter();
 
   useEffect(() => {
     const initAuth = async () => {
@@ -114,7 +114,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const logout = async () => {
     await supabase.auth.signOut();
-    navigate(ROUTES.LANDING);
+    router.push(ROUTES.LANDING);
   };
 
   const updateUser = async (updates: Partial<UserSession>) => {

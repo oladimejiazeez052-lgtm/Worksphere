@@ -1,7 +1,7 @@
 import React from 'react';
 import { AlertTriangle, RefreshCcw, Home } from 'lucide-react';
 import { motion } from 'motion/react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { ROUTES } from '../../lib/routes';
 import { cn } from '../../lib/utils';
 
@@ -20,7 +20,7 @@ export function ErrorState({
   className,
   fullPage = false
 }: ErrorStateProps) {
-  const navigate = useNavigate();
+  const router = useRouter();
 
   const content = (
     <motion.div 
@@ -50,7 +50,7 @@ export function ErrorState({
           </button>
         )}
         <button 
-          onClick={() => navigate(ROUTES.DASHBOARD)}
+          onClick={() => router.push(ROUTES.DASHBOARD)}
           className="inline-flex items-center justify-center px-6 py-2.5 bg-surface border border-outline-variant text-on-surface font-label-md rounded-xl hover:bg-surface-container transition-all active:scale-95"
         >
           <Home className="w-4 h-4 mr-2" />
