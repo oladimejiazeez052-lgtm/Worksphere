@@ -61,7 +61,9 @@ export const SidebarShell = () => {
 
         <nav className="flex-grow px-4 space-y-1">
           {NAV_ITEMS.map((item) => {
-            const isActive = pathname === item.href;
+            const isActive = item.href === '/' 
+              ? pathname === '/' 
+              : pathname.startsWith(item.href);
             return (
               <Link
                 key={item.label}

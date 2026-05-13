@@ -6,7 +6,7 @@ export const NAV_ITEMS = [
   { label: 'Find Jobs', icon: Briefcase, href: ROUTES.JOBS },
   { label: 'Workers', icon: UserCircle, href: ROUTES.WORKERS },
   { label: 'Portfolio', icon: PlusCircle, href: ROUTES.PORTFOLIO },
-  { label: 'Messages', icon: MessageSquare, href: '#' },
+  { label: 'Messages', icon: MessageSquare, href: ROUTES.MESSAGES },
   { label: 'Reports', icon: BarChart3, href: ROUTES.REPORTS },
   { label: 'Admin', icon: Shield, href: ROUTES.ADMIN },
   { label: 'Notifications', icon: Bell, href: ROUTES.NOTIFICATIONS },

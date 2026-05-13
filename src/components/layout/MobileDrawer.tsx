@@ -1,6 +1,8 @@
 import React from 'react';
 import { X, User, Settings, CreditCard, HelpCircle, AlertCircle, LogOut } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { useRouter } from 'next/navigation';
+import { ROUTES } from '@/src/lib/routes';
 import { APP_NAME } from '@/src/lib/constants';
 import { cn } from '@/src/lib/utils';
 
@@ -10,6 +12,7 @@ interface MobileDrawerProps {
 }
 
 export const MobileDrawer = ({ isOpen, onClose }: MobileDrawerProps) => {
+  const router = useRouter();
   return (
     <AnimatePresence>
       {isOpen && (
@@ -46,8 +49,8 @@ export const MobileDrawer = ({ isOpen, onClose }: MobileDrawerProps) => {
             </div>
 
             <div className="flex-grow overflow-y-auto p-4 space-y-1">
-               <DrawerItem icon={User} label="Profile" onClick={onClose} />
-               <DrawerItem icon={Settings} label="Settings" onClick={onClose} />
+               <DrawerItem icon={User} label="Profile" onClick={() => { router.push(ROUTES.PROFILE); onClose(); }} />
+               <DrawerItem icon={Settings} label="Settings" onClick={() => { router.push(ROUTES.SETTINGS); onClose(); }} />
                <DrawerItem icon={CreditCard} label="Billing & Payments" onClick={onClose} />
                <div className="h-px bg-outline my-2 mx-4" />
                <DrawerItem icon={HelpCircle} label="Help Center" onClick={onClose} />

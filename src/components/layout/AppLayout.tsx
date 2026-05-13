@@ -12,7 +12,7 @@ export const AppLayout = ({ children }: AppLayoutProps) => {
     <div className="min-h-screen bg-background flex flex-col md:flex-row">
       <SidebarShell />
 
-      <div className="flex-grow flex flex-col min-w-0">
+      <div className="flex-grow flex flex-col min-w-0 md:ml-64">
         {/* Top Header Desktop Only */}
         <header className="hidden md:flex h-16 bg-surface border-b border-outline px-8 items-center justify-between sticky top-0 z-30">
           <div className="w-full max-w-xl">

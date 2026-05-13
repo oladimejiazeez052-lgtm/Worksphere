@@ -13,4 +13,6 @@ export const ROUTES = {
   SETTINGS: '/settings',
   ADMIN: '/admin',
   AI_PROFILE: '/ai/profile-builder',
+  MESSAGES: '/messages',
+  PROFILE: '/profile',
 };

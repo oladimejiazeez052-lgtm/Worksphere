@@ -18,7 +18,9 @@ export const MobileBottomNav = () => {
   return (
     <nav className="md:hidden fixed bottom-0 left-0 right-0 h-16 bg-surface border-t border-outline flex items-center justify-around px-2 z-50">
       {MOBILE_NAV_ITEMS.map((item) => {
-        const isActive = pathname === item.href;
+        const isActive = item.href === '/' 
+          ? pathname === '/' 
+          : pathname.startsWith(item.href);
         return (
           <Link
             key={item.label}
