@@ -131,7 +131,7 @@ export function PortfolioPage() {
 
           {/* Action Bar Mobile/Sticky */}
           <div className="md:hidden sticky bottom-0 left-0 right-0 p-4 bg-surface/80 backdrop-blur-md border-t border-outline-variant flex gap-4">
-            <button className="flex-1 py-3 border-2 border-primary text-primary rounded-xl font-label-md">Save Draft</button>
+            <button onClick={handleSave} className="flex-1 py-3 border-2 border-primary text-primary rounded-xl font-label-md">Save Draft</button>
             <button onClick={handlePublish} className="flex-1 py-3 bg-primary-container text-on-primary-container rounded-xl font-label-md shadow-sm">Publish</button>
           </div>
         </div>
@@ -144,6 +144,7 @@ export function PortfolioPage() {
              <motion.button 
                whileHover={{ scale: 1.02 }}
                whileTap={{ scale: 0.98 }}
+               onClick={handleSave}
                className="px-6 py-3 bg-white border-2 border-primary text-primary rounded-xl font-label-md shadow-lg flex items-center gap-2"
              >
                <Save className="w-4 h-4" />

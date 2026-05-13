@@ -1,6 +1,9 @@
 import { MapPin, CheckCircle } from 'lucide-react';
 import { motion } from 'motion/react';
 import { RatingBadge } from '../shared/RatingBadge';
+import { useRouter } from 'next/navigation';
+import { useToast } from '../../hooks/useToast';
+import { ROUTES } from '../../lib/routes';
 
 interface WorkerCardProps {
   key?: string | number;
@@ -24,6 +27,14 @@ export function WorkerCard({
   isVerified,
   className = ""
 }: WorkerCardProps) {
+  const router = useRouter();
+  const { success } = useToast();
+
+  const handleHire = () => {
+    success(`Inquiry sent to ${name}!`);
+    router.push(ROUTES.MESSAGES);
+  };
+
   return (
     <motion.div
       whileHover={{ y: -4 }}
@@ -65,7 +76,10 @@ export function WorkerCard({
           ))}
         </div>
 
-        <button className="w-full bg-primary-container text-on-primary-container font-label-md py-2.5 rounded-xl hover:bg-primary-container/90 active:scale-[0.98] transition-all">
+        <button 
+          onClick={handleHire}
+          className="w-full bg-primary-container text-on-primary-container font-label-md py-2.5 rounded-xl hover:bg-primary-container/90 active:scale-[0.98] transition-all"
+        >
           Hire Worker
         </button>
       </div>

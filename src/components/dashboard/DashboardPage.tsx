@@ -7,6 +7,8 @@ import { ActivityChart } from './ActivityChart';
 import { RecentActivityList, ActivityFeed } from './RecentActivity';
 import { Send, CheckCircle2, Wallet, Eye, Plus } from 'lucide-react';
 import { motion } from 'motion/react';
+import { useRouter } from 'next/navigation';
+import { ROUTES } from '../../lib/routes';
 
 const container = {
   hidden: { opacity: 0 },
@@ -25,6 +27,7 @@ import { useAuth } from '../../hooks/useAuth';
 
 export const DashboardPage = () => {
   const { user } = useAuth();
+  const router = useRouter();
   
   return (
     <AppLayout>
@@ -33,7 +36,7 @@ export const DashboardPage = () => {
           title={`Welcome back, ${user?.name?.split(' ')[0] || 'Alex'}`} 
           description="Here's what's happening with your freelance business today."
           action={
-            <Button className="shadow-lg">
+            <Button className="shadow-lg" onClick={() => router.push(ROUTES.JOBS)}>
               <Plus className="mr-2 h-4 w-4" /> Find New Jobs
             </Button>
           }
